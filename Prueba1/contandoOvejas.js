@@ -9,3 +9,11 @@ const ovejas = [
   { name: "AAAAAaaaaa", color: "rojo" },
   { name: "Nnnnnnnn", color: "rojo" },
 ];
+
+const contarOvejas = (ovejas) => {
+  return ovejas
+    .filter((oveja) => oveja.color === "rojo")
+    .filter((oveja) => oveja.name.match(/a/gi) && oveja.name.match(/n/gi));
+};
+
+console.log(contarOvejas(ovejas));
