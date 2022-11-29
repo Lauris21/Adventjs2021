@@ -4,7 +4,7 @@
 
 ---
 
-Considera una lista/array de ovejas. Cada oveja tiene un nombre y un color. Haz una función que devuelva una lista con todas las ovejas que sean de color rojoy que además su nombre contenga tanto las letras **n**  y **a**, sin importar el orden, las mayúsculas o espacios.
+Considera una lista/array de ovejas. Cada oveja tiene un nombre y un color. Haz una función que devuelva una lista con todas las ovejas que sean de color rojoy que además su nombre contenga tanto las letras `n`  y `a`, sin importar el orden, las mayúsculas o espacios.
 
 ```javascript
 // Filtro por el color rojo y los nombres que coincidan con la expresión regular.
@@ -24,3 +24,25 @@ Te ha llegado una carta ✉️ con todos los regalos que debes preparar. El tema
 Encima nos hemos dado cuenta que algunas palabras vienen con un **`_`** delante de la palabra, por ejemplo `_playstation`, que significa que está tachado y no se tiene que contar.
 
 Transforma el texto a un objeto que contenga el nombre de cada regalo y las veces que aparece.
+
+```javascript
+const listGifts = (letter) => {
+  // Convertir el string en array dividido por espacios
+  // Filtramos quitando los items vacios y los que empiezan por _
+  // Sumamos los valores repetidos y devolvemos un objeto
+  return letter
+    .split(" ")
+    .filter((item) => (item !== "") & !item.startsWith("_"))
+    .reduce((result, i) => {
+      if (!result[i]) {
+        result[i] = 0;
+      }
+      result[i]++;
+      return result;
+    }, {});
+};
+```
+
+## Día 3: “El Grinch quiere fastidiar la Navidad” 👽
+
+---
