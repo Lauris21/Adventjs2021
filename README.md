@@ -126,3 +126,26 @@ const createXmasTree = (height) => {
   return tree.join("\n");
 };
 ```
+
+## Dia 5: “Contando los días para los regalos” 🎁
+
+---
+
+Con la emoción, ya estamos empezando a **contar los días del calendario hasta el 25 de diciembre 📆.**
+
+Para ayudar a esto, vamos a crear una función que pasándole una instancia de `Date` nos diga el número de días que faltan.
+
+El resultado tiene que ser **un número entero** y, como ves, aunque falte un segundo hasta el siguiente día, se entiende que todavía falta un día.
+
+**¡Pero ojo!** También hay que indicar si la fecha es del mismo día (devolveríamos `0`) o si es una fecha futura (devolveríamos el número de días en negativo `-`):
+
+```javascript
+const daysToXmas = (date) => {
+  // Fijamos la fecha hasta la que queremos contar.
+  const christmas = new Date("Dec 25, 2021 00:00:00");
+  // Definimos los milisegundos por día.
+  const millisecondsDay = 1000 * 60 * 60 * 24;
+  // Redondeamos hacia arriba y devolvemos el entero menor, mayor o igual al número dado.
+  return Math.ceil((christmas - date) / millisecondsDay);
+};
+```
