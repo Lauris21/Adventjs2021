@@ -65,3 +65,64 @@ const isValid = (letter) => {
   return /^[^\{\[\(\)]*\([^\{\[\(\)]+\)+.*/g.test(letter);
 };
 ```
+
+## Día 4: ¡Es hora de poner la navidad en casa! 🎄
+
+---
+
+¡Es hora de poner el árbol de navidad en casa! 🎄
+Para ello vamos a crear una función que recibe la altura del árbol, que será un entero positivo del 1 a, como máximo, 100.
+Si le pasamos el argumento `5`, se pintaría esto:
+
+```javascript
+____*____
+___***___
+__*****__
+_*******_
+*********
+____#____
+____#____
+```
+
+Creamos un triángulo de asteriscos `*` con la altura proporcionada y, a los lados, usamos el guión bajo `_` para los espacios. Es muy importante que nuestro árbol siempre tenga la misma longitud por cada lado.
+
+Todos los árboles, por pequeños o grandes que sean, tienen un tronco de dos líneas de `#`.
+
+```javascript
+const createXmasTree = (height) => {
+  // Creamos un objeto con los símbolos a utilizar.
+  const tools = {
+    branch: "*",
+    padding: "_",
+    trunk: "#",
+  };
+  const tree = [];
+  // Fijamos mínimo de una rama "*".
+  let width = 1;
+  // Asignamos las veces que se repetirán los laterales "_",
+  //iniciándose con la altura introducida menos 1.
+  let emptyChars = height - 1;
+  // Los laterales "_" se repetirán las veces que indique emptyChars.
+  let side = tools.padding.repeat(emptyChars);
+  // Definimos el tronco.
+  const sideTrunk = `${side}${tools.trunk}${side}`;
+
+  // Recorremos la altura, en cada vuelta fijamos los laterales "_" y las ramas "*".
+  for (let i = 0; i < height; i++) {
+    // Las ramas "*" se repetirán tantas veces como indique width.
+    let branchs = tools.branch.repeat(width);
+    side = tools.padding.repeat(emptyChars);
+    // Añadimos al árbol los laterales y las rmas
+    tree.push(`${side}${branchs}${side}`);
+    // Sumamos 2 a width.
+    width += 2;
+    // Restamos 1 a emptyChars.
+    emptyChars--;
+  }
+  // Le añadimos el tronco al árbol.
+  tree.push(sideTrunk);
+  tree.push(sideTrunk);
+
+  return tree.join("\n");
+};
+```
