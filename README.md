@@ -178,3 +178,41 @@ const sumPairs = (numbers, result) => {
   return null;
 };
 ```
+
+## Día7: “Buscando en el almacén …” 📦
+
+---
+
+Mi amigo Dani está trabajando en una tienda y con la llegada de las navidades tiene el almacén hecho un desastre y no encuentra nada.
+
+Vamos a crear una función `contains` que recibe dos parámetros: un objeto que define el almacén y el producto que buscamos.
+
+La función debe devolver un booleano que indique si se encuentra el string como valor en algún nivel del objeto.
+
+```javascript
+const contains = (store, product) => {
+  // Recorremos las propiedades de store.
+  for (const property in store) {
+    // Si la propiedad es tipo string y coincide con product devuelve true.
+    if (typeof store[property] === "string" && store[property] === product) {
+      return true;
+    }
+
+    // Si la propiedad es un objeto y la colección contiene product devuelve true.
+    if (typeof store[property] === "object") {
+      if (contains(store[property], product)) return true;
+    }
+  }
+
+  // Si no encuentra product devuelve false
+  return false;
+};
+```
+
+## Día8:
+
+---
+
+```javascript
+
+```
