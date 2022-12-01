@@ -149,3 +149,32 @@ const daysToXmas = (date) => {
   return Math.ceil((christmas - date) / millisecondsDay);
 };
 ```
+
+## Día6: “Rematando los exámenes finales” 📚
+
+---
+
+Antes de poder disfrutar de la navidad... nos toca terminar de rematar los exámenes finales. ¡Y toca un poco de matemáticas! 😱
+
+A una función se le pasan dos parámetros: un Array con números y el resultado que se espera.
+
+La función debe devolver los dos valores del Array que sumen el resultado esperado. Como a veces **pueden haber más de dos valores** que sumen, se devolverá el primero empezando por la izquierda que encuentre otro par, **sin importar lo lejos que esté a la derecha**.
+
+Si no se encuentra, se devuelve `null`.
+
+```javascript
+const sumPairs = (numbers, result) => {
+  // Recorremos el array de numbers desde la posición 0 y 1.
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 1; j < numbers.length; j++) {
+      // Si i y j no coinciden y los números donde se encuentran i y j
+      // suman el resultado, se devuelven dichos números.
+      if (i !== j && numbers[i] + numbers[j] === result)
+        return [numbers[i], numbers[j]];
+    }
+  }
+
+  // Si no se cumple la condición cuando acabe el bucle devolvemos null.
+  return null;
+};
+```
