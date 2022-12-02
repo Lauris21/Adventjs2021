@@ -211,8 +211,34 @@ const contains = (store, product) => {
 
 ## Día8:
 
----
+Invertir en criptomonedas es casi un deporte de riesgo. El otro día hackearon Bitmart y ha hecho que el valor de Bitcoin, y otras monedas, bajase un 25%.
+
+Vamos a escribir una función que reciba la lista de precios de una criptomoneda en un día y debemos devolver la ganancia máxima que podríamos sacar si compramos y vendemos la inversión el mismo día.
+
+La lista de precios es un array de números y representa el tiempo de izquierda a derecha. Por lo que ten en cuenta que **no puedes comprar a un precio que esté a la derecha de la venta y no puedes vender a un precio que esté a la izquierda de la compra.**
+
+**Si ese día no se puede sacar ningún beneficio**, tenemos que devolver `-1`para evitar que hagamos una locura:
 
 ```javascript
+const maxProfit = (prices) => {
+  // Ordenamos de menor a mayor
+  const newPrices = [...prices].sort();
 
+  // Recorremos el array ordenado
+  for (let i = 0; i < newPrices.length; i++) {
+    // y tambien de atrás alante.
+    for (let j = newPrices.length; j >= 0; j--) {
+      // Comparamos las posiciones en el array original
+      // (newPrices[i] iniciará en la posición donde se encuentre el número menor),
+      // Para devolver true cuando el mayor se encuentre a su derecha.
+      if (prices.indexOf(newPrices[i]) < prices.indexOf(newPrices[j])) {
+        // Si encuentra un número mayor hacemos la resta para devolver la diferencia.
+        if (newPrices[i] < newPrices[j]) {
+          return newPrices[j] - newPrices[i];
+        }
+      }
+    }
+  }
+  return -1;
+};
 ```
