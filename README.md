@@ -150,7 +150,7 @@ const daysToXmas = (date) => {
 };
 ```
 
-## Día6: “Rematando los exámenes finales” 📚
+## Día 6: “Rematando los exámenes finales” 📚
 
 ---
 
@@ -179,7 +179,7 @@ const sumPairs = (numbers, result) => {
 };
 ```
 
-## Día7: “Buscando en el almacén …” 📦
+## Día 7: “Buscando en el almacén …” 📦
 
 ---
 
@@ -209,7 +209,7 @@ const contains = (store, product) => {
 };
 ```
 
-## Día8:
+## Día 8: “La locura de las criptomonedas” 💸
 
 Invertir en criptomonedas es casi un deporte de riesgo. El otro día hackearon Bitmart y ha hecho que el valor de Bitcoin, y otras monedas, bajase un 25%.
 
@@ -240,5 +240,28 @@ const maxProfit = (prices) => {
     }
   }
   return -1;
+};
+```
+
+## Día 9: “Agrupando cosas automáticamente” 🎅🏼
+
+En la fábrica de Papa Noél 🎅 se acerca el día especial... y todavía tenemos un montón de cosas por contar. 😅
+
+Por suerte a **Mark Zucktheelf** 🧝 se le ha ocurrido crear una función que permita agrupar un array, que puede ser de valores u objetos, a través de una función o de una propiedad.
+
+Como ves, la función `groupBy` recibe una colección (array) y una función o una propiedad, y devuelve un objeto con claves que son los valores de la función ejecutada pasando como argumento cada elemento o de la propiedad por cada elemento. Luego los valores son un array de los valores que tengan la misma llave.
+
+```javascript
+const groupBy = (collection, it) => {
+  // Recorremos la colección
+  return collection.reduce((res, i) => {
+    // Si el segundo parámetro es una función se lo aplicamos a cada elemento y
+    // lo almacenamos en key. Si no almacenamos el valor
+    let key = typeof it === "function" ? it(i) : i[it];
+
+    // En la respuesta almacenamos la clave y el valor y lo devolvemos en un objeto.
+    res[key] = [...(res[key] || []), i];
+    return res;
+  }, {});
 };
 ```

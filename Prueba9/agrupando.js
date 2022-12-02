@@ -1,10 +1,9 @@
 const groupBy = (collection, it) => {
-  return collection.reduce((acc, i) => {
+  return collection.reduce((res, i) => {
     let key = typeof it === "function" ? it(i) : i[it];
 
-    acc[key] = [...(acc[key] || []), i];
-    console.log(acc);
-    return acc;
+    res[key] = [...(res[key] || []), i];
+    return res;
   }, {});
 };
 
